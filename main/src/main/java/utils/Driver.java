@@ -13,7 +13,7 @@ public class Driver {
 		throw new UnsupportedOperationException("Cannot instantiate utility class");
 	}
 
-	public static WebDriver getDriver() {
+	public synchronized static WebDriver getDriver() {
 		if (DRIVER_THREAD_LOCAL.get() == null) {
 			WebDriver driver;
 			String browserType = System.getProperty("browser", "chrome");
@@ -47,6 +47,14 @@ public class Driver {
 			DRIVER_THREAD_LOCAL.set(driver);
 		}
 		return DRIVER_THREAD_LOCAL.get();
+	}
+
+	public static void closeDriver() {
+		WebDriver currentDriver = DRIVER_THREAD_LOCAL.get();
+		if (currentDriver != null) {
+			currentDriver.quit();
+			DRIVER_THREAD_LOCAL.remove();
+		}
 	}
 
 }

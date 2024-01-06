@@ -12,9 +12,7 @@ public class Hooks {
 
 	@AfterAll
 	public static void tearDownTestEnvironment() {
-		if (Driver.getDriver() != null) {
-			Driver.getDriver().quit();
-		}
+		Driver.closeDriver();
 	}
 
 }

@@ -4,7 +4,6 @@ import pages.OrderPage;
 import pages.WebOrderHomePage;
 import pages.WebOrderLoginPage;
 import utils.BrowserUtils;
-import utils.Driver;
 
 public class WebOrderTest extends Hooks {
 
