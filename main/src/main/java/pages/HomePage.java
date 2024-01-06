@@ -1,56 +1,67 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class HomePage {
-    private WebDriver driver;
+public class HomePage extends BasePage {
 
-    //Locators
-    private By webOrderLink = By.linkText("Weborder");
-    private By webAutomationLink = By.linkText("Webautomation");
-    private By targetMarketLink = By.linkText("Target Market");
-    private By bookingLink = By.linkText("Booking");
-    private By handlingCertifications = By.linkText("Handling Certifications");
-    private By fileUploading = By.linkText("File Uploading");
-    private By exploreInarTestingWorldTitleTest = By.cssSelector("h1.display-1.text-fifth");
+	// Locators
+	@FindBy(linkText = "Weborder")
+	private WebElement webOrderLink;
 
-    public HomePage(WebDriver driver) {
-        this.driver = driver;
-    }
+	@FindBy(linkText = "Webautomation")
+	private WebElement webAutomationLink;
 
-    //Page actions with Java methods
-    public  WebOrderLoginPage clickOnWebOrderLink() {
-        driver.findElement(webOrderLink).click();
-        return new WebOrderLoginPage(driver);
-    }
+	@FindBy(linkText = "Target Market")
+	private WebElement targetMarketLink;
 
-    public void clickOnWebAutomationLink() {
-        driver.findElement(webAutomationLink).click();
-    }
+	@FindBy(linkText = "Booking")
+	private WebElement bookingLink;
 
-    public void clickOnTargetMarketLink() {
-        driver.findElement(targetMarketLink).click();
-    }
+	@FindBy(linkText = "Handling Certifications")
+	private WebElement handlingCertifications;
 
-    public void clickOnBookingLink() {
-        driver.findElement(bookingLink).click();
-    }
+	@FindBy(linkText = "File Uploading")
+	private WebElement fileUploading;
 
-    public void clickOnHandlingCertificationsLink() {
-        driver.findElement(handlingCertifications).click();
-    }
+	@FindBy(css = "h1.display-1.text-fifth")
+	private WebElement exploreInarTestingWorldTitleTest;
 
-    public void clickOnFileUploadingLink() {
-        driver.findElement(fileUploading).click();
-    }
+	public HomePage() {
+		super();
+	}
 
-    public String getWelcomeText() {
-        return driver.findElement(exploreInarTestingWorldTitleTest).getText();
-    }
+	// Page actions with Java methods
+	public void clickOnWebOrderLink() {
+		webOrderLink.click();
+	}
 
-    public void refreshPage(){
-        driver.navigate().refresh();
-    }
+	public void clickOnWebAutomationLink() {
+		webAutomationLink.click();
+	}
+
+	public void clickOnTargetMarketLink() {
+		targetMarketLink.click();
+	}
+
+	public void clickOnBookingLink() {
+		bookingLink.click();
+	}
+
+	public void clickOnHandlingCertificationsLink() {
+		handlingCertifications.click();
+	}
+
+	public void clickOnFileUploadingLink() {
+		fileUploading.click();
+	}
+
+	public String getWelcomeText() {
+		return exploreInarTestingWorldTitleTest.getText();
+	}
+
+	public void refreshPage() {
+		driver.navigate().refresh();
+	}
 
 }
